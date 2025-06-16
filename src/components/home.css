@@ -1,0 +1,165 @@
+.home-container {
+  background: url("/bgportfolio.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 100px 5vw 60px;
+  min-height: 100vh; /* Ensures full visibility */
+  box-sizing: border-box;
+  animation: fadeIn 1.5s ease-out;
+  
+}
+
+/* Entry animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.content1 {
+  line-height: 1.5;
+  max-width: 600px;
+  text-align: center;
+  z-index: 1;
+}
+.section-with-navbar-offset {
+  padding-top: var(--navbar-height);
+}
+
+
+.heading1 {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  color: #eee;
+}
+
+.name-heading {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: bold;
+  background: linear-gradient(90deg, #8fd3f4, #84fab0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2.5s steps(30, end) forwards;
+  position: relative;
+}
+
+/* Glow underline */
+.name-heading::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  margin: 10px auto 0;
+  background: #84fab0;
+  border-radius: 10px;
+  animation: slideIn 1.5s ease-out;
+}
+
+@keyframes slideIn {
+  0% { width: 0; }
+  100% { width: 100px; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.heading2 {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  color: #ddd;
+}
+
+.frontenddevp {
+  color: rgb(127, 183, 232);
+  font-size: 1.1rem;
+}
+
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.button1,
+.button2 {
+  padding: 14px 24px;
+  font-size: 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.button1 {
+  background: rgb(23, 70, 111);
+  color: rgb(236, 234, 234);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.button1:hover {
+  background: none;
+  border: 2px solid rgb(23, 70, 111);
+}
+
+.button2 {
+  border: 2px solid rgb(23, 70, 111);
+  background: none;
+  color: rgb(236, 234, 234);
+  cursor: pointer;
+}
+
+.button2:hover {
+  background: rgb(23, 70, 111);
+  color: white;
+}
+
+/* Profile Image */
+.profile-image {
+  width: min(90vw, 420px);
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease;
+  margin-top: 20px;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+/* ------------------ Responsive Layout ------------------ */
+@media screen and (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    gap: 40px;
+    padding: 120px 6vw 60px;
+  }
+
+  .profile-image {
+    margin-top: 0;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}

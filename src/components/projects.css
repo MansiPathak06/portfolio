@@ -1,0 +1,110 @@
+/* ---------- Section layout ---------- */
+.projects {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(2rem, 6vw, 4rem);  /* fixed typo: now largest is 4rem */
+  color: rgb(127, 183, 232);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- Grid ---------- */
+.project-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* slightly smaller cards on mobile */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;  /* NEW: prevent edge clipping on small screens */
+  box-sizing: border-box;
+}
+
+/* ---------- Card ---------- */
+.project-card {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1e1e1e; /* Optional: ensure contrast if no image */
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.45);
+}
+
+.project-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;   /* ✅ uncommented for consistent image appearance */
+}
+
+/* ---------- Project Content ---------- */
+.project-content {
+  padding: 1.25rem 1.5rem 2rem;
+}
+
+.project-content h3 {
+  margin: 0.4rem 0 0.2rem;
+  font-size: 1.25rem;
+  color: #e8e8e8;
+}
+
+.subtitle {
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+  color: #b5b5b5;
+  font-size: 0.95rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  margin-top: 0.9rem;
+  padding: 0.55rem 1.3rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  border: 2px solid #57c8ff;
+  color: #57c8ff;
+  transition: background 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #57c8ff;
+  color: #0f0f0f;
+}
+
+.disabled-btn,
+.project-card.disabled:hover {
+  cursor: default;
+  background: transparent;
+  color: #999;
+  border-color: #666;
+}
+
+.project-card.disabled {
+  opacity: 0.55;
+  pointer-events: none; /* disables click */
+}
+
+/* ---------- Responsive Tweaks ---------- */
+@media screen and (max-width: 600px) {
+  .project-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

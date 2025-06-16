@@ -1,0 +1,160 @@
+.skills-container {
+  padding: 50px 20px;
+  background-color: transparent;
+  box-sizing: border-box;
+  animation: fadeInSkills 1.2s ease-in-out;
+}
+
+@keyframes fadeInSkills {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-heading {
+  text-align: center;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: white;
+  margin-bottom: 40px;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.skill-heading::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: rgb(127, 183, 232);
+  margin: 10px auto 0;
+  border-radius: 5px;
+  animation: expandBar 1.2s ease;
+}
+
+@keyframes expandBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80px;
+  }
+}
+
+.purple {
+  color: rgb(127, 183, 232);
+}
+
+/* ---------- Cards Layout ---------- */
+.skill-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* ---------- Each Card ---------- */
+.skill-item {
+  width: 180px;
+  text-align: center;
+  background-color: rgba(33, 33, 33, 0.4);
+  border-radius: 12px;
+  padding: 30px 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+  backdrop-filter: blur(6px);
+}
+
+.skill-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(120deg, #84fab0, #8fd3f4, #84fab0);
+  background-size: 200%;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.skill-item:hover::before {
+  opacity: 1;
+  animation: borderAnimation 2s linear infinite;
+}
+
+@keyframes borderAnimation {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.skill-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(127, 183, 232, 0.3);
+}
+
+.skill-item svg {
+  font-size: 2.7rem;
+  color: #d6bfdc;
+  margin-bottom: 12px;
+  transition: transform 0.4s ease;
+}
+
+.skill-item:hover svg {
+  transform: scale(1.15);
+}
+
+.skill-name {
+  font-size: 1.15rem;
+  color: wheat;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- Responsive Design ---------- */
+@media screen and (max-width: 768px) {
+  .skill-heading {
+    font-size: 2.2rem;
+  }
+
+  .skill-cards {
+    gap: 1.5rem;
+  }
+
+  .skill-item {
+    width: 140px;
+    padding: 22px 10px;
+  }
+
+  .skill-item svg {
+    font-size: 2.2rem;
+  }
+
+  .skill-name {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skill-item {
+    width: 120px;
+    padding: 18px 8px;
+  }
+
+  .skill-item svg {
+    font-size: 2rem;
+  }
+
+  .skill-name {
+    font-size: 0.95rem;
+  }
+}

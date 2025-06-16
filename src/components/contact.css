@@ -1,0 +1,132 @@
+.contact {
+  padding: 50px 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.contact-main-heading {
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
+  margin-bottom: 20px;
+  color: rgb(186, 223, 251);
+  text-align: center;
+}
+
+.left-contact {
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(28, 28, 28, 0.5);
+  padding: 30px;
+  border: 2px solid rgb(115, 174, 219);
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px rgba(103, 88, 107, 0.4);
+  box-sizing: border-box;
+}
+
+.lets-talk-text {
+  font-size: 1.5rem;
+  color: rgb(115, 174, 219);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.statement-text {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #f3e2ff;
+  text-align: center;
+}
+
+.e-mail-detail {
+  font-weight: bold;
+  color: rgb(115, 174, 219);
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+}
+
+.e-mail-detail:hover {
+  opacity: 0.8;
+}
+
+/* Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form label {
+  font-size: 1rem;
+  color: #d6cadd;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgb(127, 183, 232);
+  box-shadow: 0 0 0 2px rgba(134, 155, 230, 0.3);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(127, 183, 232);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #52a2ce;
+}
+
+/* ---------- Responsive Layout ---------- */
+@media screen and (max-width: 768px) {
+  .contact {
+    padding: 30px 15px;
+  }
+
+  .left-contact {
+    padding: 20px;
+  }
+
+  .contact-form label {
+    font-size: 0.95rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .left-contact {
+    padding: 15px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
