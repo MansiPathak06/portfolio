@@ -10,8 +10,8 @@ const projects = [
     description:
       "I developed a responsive personal portfolio website using React to showcase my skills, projects, and contact information. The site features a modular component structure, including a sticky Navbar for smooth navigation, a dynamic Home section with an introduction, an About section highlighting my background and skills section, a Projects section displaying key work with live demo links, and a functional Contact Form for direct communication. Styled with CSS, the site ensures a modern look and mobile responsiveness. React Router is used to enable seamless single-page navigation, making the portfolio both user-friendly and efficient.",
     img: "portfoliothumbnail.jpg",     // replace with your image path
-    url: "https://your‑portfolio‑site.com",
-    repo: "https://github.com/you/portfolio",
+    url: "https://mansi-portfolio06.netlify.app/",
+    repo: "https://github.com/MansiPathak06/portfolio",
   },
   {
     id: 2,
@@ -20,8 +20,8 @@ const projects = [
     description:
       "This Dice Game is built using React and simulates a simple two-player game between the user and the computer. On clicking the “Roll” button, both players roll a dice, and the result is instantly shown on screen with animated dice faces.The application demonstrates core React concepts such as state management, conditional rendering, and basic game logic. It also includes responsive design and a reset score option for replaying rounds. The player can also read rules before starting the game!",
     img: "dicegamethumbnail.jpg",
-    url: "https://dice-game-demo.netlify.app",
-    repo: "https://github.com/you/dice-game",
+    url: "http://minidicerollgame.netlify.app",
+    repo: "https://github.com/MansiPathak06/Dice-game",
   },
   {
     id: 3,
