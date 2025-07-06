@@ -163,3 +163,38 @@
     align-items: center;
   }
 }
+@media screen and (max-width: 480px) {
+  .home-container {
+    padding: 100px 4vw 40px;
+    gap: 30px;
+  }
+
+  .heading1,
+  .heading2 {
+    font-size: 1rem;
+  }
+
+  .name-heading {
+    font-size: 2.2rem;
+    white-space: normal;
+    animation: none; /* Avoid overflow on tiny screens */
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button1,
+  .button2 {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .profile-image {
+    width: 80vw;
+    height: auto;
+    border-radius: 50%;
+  }
+}

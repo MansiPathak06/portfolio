@@ -38,7 +38,7 @@ const Contact = () => {
         <div className="lets-talk-text">Let's talk!</div>
 
         <p className="statement-text">
-          Connect with me via e‑mail:&nbsp;
+          Connect with me via E‑mail:&nbsp;
           <a
             href="mailto:pathakmansi608@gmail.com"
             className="e-mail-detail"
