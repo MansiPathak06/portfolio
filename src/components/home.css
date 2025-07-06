@@ -1,5 +1,5 @@
 .home-container {
-  background: url("/bgportfolio.jpg");
+  /* background: url("/bgportfolio.jpg"); */
   background-size: cover;
   background-position: center;
   display: flex;

@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faHtml5 } from "@fortawesome/free-brands-svg-icons";
+import { faGitAlt, faHtml5, faNodeJs } from "@fortawesome/free-brands-svg-icons";
 
 import { faCss3 } from "@fortawesome/free-brands-svg-icons";
 import { faReact } from "@fortawesome/free-brands-svg-icons";
@@ -10,6 +10,7 @@ import { faPython } from "@fortawesome/free-brands-svg-icons";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons"; // ✅ correct
 
 import { faMicrosoft} from "@fortawesome/free-brands-svg-icons";
+
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faFeatherPointed } from "@fortawesome/free-solid-svg-icons";
 import './skills.css';
@@ -41,6 +42,10 @@ const Skills = () => {
           <p className="skill-name">ReactJS</p>
         </div>
         <div className="skill-item">
+        <FontAwesomeIcon icon={faNodeJs} />
+          <p className="skill-name">NodeJS</p>
+        </div>
+        <div className="skill-item">
         <FontAwesomeIcon icon={faJava} />
           <p className="skill-name">Java Basics</p>
         </div>
@@ -65,8 +70,8 @@ const Skills = () => {
           <p className="skill-name">Leadership</p>
         </div>
         <div className="skill-item">
-        <FontAwesomeIcon icon={faGithub}/>
-          <p className="skill-name">GitHub</p>
+        <FontAwesomeIcon icon={faGitAlt}/>
+          <p className="skill-name">Git</p>
         </div>
       </div>
     </div>

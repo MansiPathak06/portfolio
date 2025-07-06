@@ -80,7 +80,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 2px;
-  background: linear-gradient(120deg, #84fab0, #8fd3f4, #84fab0);
+  background: linear-gradient(120deg, #84fab0, #427a96, #84fab0);
   background-size: 200%;
   z-index: -1;
   transition: opacity 0.4s ease;
