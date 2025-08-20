@@ -18,7 +18,7 @@ const Home = () => {
           <a href="#contact" className="button1">Connect with me</a>
 
           <a
-            href="/resume.pdf"
+            href="/resume-mansi.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="button2"
