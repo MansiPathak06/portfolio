@@ -44,7 +44,7 @@ const projects = [
     title: "Jigyasa Hospital",
     subtitle: "Healthcare Website",
     description: "A professional hospital management website with appointment booking, doctor profiles, department information, and patient services. Built with modern web standards and healthcare focus.",
-    url: "https://jigyasa-hospital.netlify.app/",
+    url: "https://jigyasahospital.com/",
     repo: "",
     tech: ["React", "CSS3", "JavaScript"],
   },
