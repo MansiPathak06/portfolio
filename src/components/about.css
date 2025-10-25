@@ -1,6 +1,5 @@
 /* ---------- ABOUT CONTAINER ---------- */
 .about-container {
-  /* background: url("/bgportfolio.jpg"); */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -32,6 +31,52 @@
   align-items: center;
   padding: 2rem;
   box-sizing: border-box;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.glow-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 105%;
+  height: 105%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgb(127, 183, 232),
+    rgb(132, 250, 176),
+    rgb(127, 183, 232)
+  );
+  opacity: 0.6;
+  animation: rotate 4s linear infinite;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .about-image {
@@ -39,12 +84,25 @@
   height: auto;
   border-radius: 50%;
   border: 5px solid rgb(127, 183, 232);
-  box-shadow: 0 0 20px rgba(127, 183, 232, 0.4);
-  transition: transform 0.5s ease;
+  box-shadow: 0 0 20px rgba(127, 183, 232, 0.4), 0 0 40px rgba(127, 183, 232, 0.2);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  z-index: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .about-image:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 0 30px rgba(127, 183, 232, 0.6), 0 0 60px rgba(127, 183, 232, 0.3);
 }
 
 /* ---------- RIGHT TEXT SECTION ---------- */
@@ -53,6 +111,18 @@
   max-width: 720px;
   padding: 2rem;
   box-sizing: border-box;
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* ---------- HEADING ---------- */
@@ -60,10 +130,26 @@
   text-align: center;
   font-size: clamp(2.5rem, 5vw + 1rem, 5rem);
   font-weight: 700;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.about-text {
   background: linear-gradient(90deg, #8fd3f4, #84fab0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  position: relative;
+  background-clip: text;
+  display: inline-block;
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(127, 183, 232, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(127, 183, 232, 0.6));
+  }
 }
 
 .about::after {
@@ -71,15 +157,24 @@
   display: block;
   width: 80px;
   height: 4px;
-  background: rgb(127, 183, 232);
+  background: linear-gradient(90deg, rgb(127, 183, 232), rgb(132, 250, 176));
   margin: 12px auto 0;
   border-radius: 5px;
-  animation: expandBar 1.2s ease;
+  animation: expandBar 1.2s ease, pulse 2s ease-in-out infinite;
 }
 
 @keyframes expandBar {
   from { width: 0; }
   to { width: 80px; }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(127, 183, 232, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(127, 183, 232, 0.8);
+  }
 }
 
 /* ---------- MAIN CONTENT ---------- */
@@ -90,6 +185,16 @@
   margin: 0 auto;
   color: #f3f3f3;
   text-align: justify;
+  animation: fadeIn 1.2s ease-out 0.3s backwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* ---------- EDUCATION & CERTIFICATIONS ---------- */
@@ -99,6 +204,25 @@
   color: rgb(127, 183, 232);
   font-size: 1.5rem;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  animation: fadeIn 1.4s ease-out 0.5s backwards;
+}
+
+.section-icon {
+  font-size: 1.8rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .sub-heading {
@@ -123,20 +247,88 @@
   border-radius: 10px;
   backdrop-filter: blur(4px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.6s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.lists li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(127, 183, 232, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.lists li:hover::before {
+  left: 100%;
+}
+
+.lists li:nth-child(1) {
+  animation-delay: 0.7s;
+}
+
+.lists li:nth-child(2) {
+  animation-delay: 0.85s;
+}
+
+.lists li:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.research-paper {
+  animation-delay: 1.15s;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .lists li:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 18px rgba(127, 183, 232, 0.25);
+  transform: translateX(10px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(127, 183, 232, 0.4), 0 0 30px rgba(127, 183, 232, 0.2);
+  border-color: rgb(132, 250, 176);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .degree {
   flex: 1;
+  transition: color 0.3s ease;
 }
+
+.lists li:hover .degree {
+  color: rgb(132, 250, 176);
+}
+
 .year1, .year2, .year3 {
   flex-shrink: 0;
   color: rgb(127, 183, 232);
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  background: rgba(127, 183, 232, 0.1);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.lists li:hover .year1,
+.lists li:hover .year2,
+.lists li:hover .year3 {
+  background: rgba(132, 250, 176, 0.2);
+  color: rgb(132, 250, 176);
+  transform: scale(1.05);
 }
 
 /* ---------- MEDIA QUERIES ---------- */
@@ -164,6 +356,15 @@
 
   .about-image {
     width: 80%;
+  }
+
+  .Edu-and-certi {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .section-icon {
+    font-size: 1.5rem;
   }
 }
 

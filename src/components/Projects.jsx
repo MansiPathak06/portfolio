@@ -8,7 +8,6 @@ const getScreenshotUrl = (websiteUrl) => {
   return `https://api.screenshotlayer.com/api/capture?access_key=c7b8de7e5c8b0f9e9f4b7f9c0c7b8d7e&url=${encodeURIComponent(websiteUrl)}&viewport=1440x900&width=400&format=PNG`;
 };
 
-// 1️⃣  Edit this list to add / remove projects in one place
 const projects = [
   {
     id: 1,
@@ -57,8 +56,36 @@ const projects = [
     repo: "",
     tech: ["React", "CSS3", "JavaScript"],
   },
+ {
+  id: 6,
+  title: "GramShree-Apna Bazaar",
+  subtitle: "FMCG Retail & Franchise Platform",
+  description: "A government-affiliated franchise-driven retail platform under UP's Mukhya Mantri Yuva Udhyam Vikas Yojna offering FMCG, groceries, home care, and daily essentials. Features ERP integration, POS billing system, CRM tools, franchise management dashboard, 3D store visualization, online application portal, and comprehensive business ecosystem for Mini, Super, and Hyper Marts.",
+  url: "https://gramshree.co.in/",
+  repo: "",
+  tech: ["React", "CSS3", "JavaScript","POS Integration"],
+},
+
   {
-    id: 6,
+    id: 7,
+    title: "Brass Hospital",
+    subtitle: "Multi-Specialty Healthcare Website",
+    description: "A professional healthcare website for Brass Hospital in Moradabad featuring department information, specialist profiles, patient care services, and medical facility details. Built with modern web standards for optimal patient experience.",
+    url: "https://www.brasshospital.com/",
+    repo: "",
+    tech: ["React", "CSS3"],
+  },
+  {
+    id: 8,
+    title: "EspoCRM",
+    subtitle: "Customer Relationship Management System",
+    description: "A full-featured open-source CRM platform with sales automation, marketing campaigns, email management, workflow automation, BPM tools, calendar integration, and Twilio click-to-call functionality. Includes lead tracking, contact management, and comprehensive reporting analytics.",
+    url: "https://espocrm.netlify.app",
+    repo: "",
+    tech: ["React", "CSS3", "JavaScript", "Express.js", "Node.js","Twilio API", "MySQL"],
+  },
+  {
+    id: 9,
     title: "Motor Services",
     subtitle: "Automotive Service Platform",
     description: "A comprehensive motor service website offering vehicle maintenance, repair services, and automotive solutions. Clean interface with service booking and customer support features.",
@@ -67,6 +94,7 @@ const projects = [
     tech: ["React", "CSS3", "JavaScript"],
   },
 ];
+
 
 const Projects = () => (
   <section className="projects" id="projects">
