@@ -11,7 +11,7 @@ const Home = () => {
         <h2 className="heading1">Hello out there,</h2>
         <h1 className="name-heading">I'm Mansi Pathak,</h1>
         <h2 className="heading2">
-          a passionate <span className="frontenddevp">frontend developer</span>.
+          a passionate <span className="frontenddevp">full stack developer</span>.
         </h2>
         <div className="buttons">
           {/* <div className="button1">Connect with me</div> */}

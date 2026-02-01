@@ -2,10 +2,10 @@ import React from "react";
 import "./projects.css";
 
 // Helper function to generate screenshot URL
-const getScreenshotUrl = (websiteUrl) => {
-  if (!websiteUrl) return 'https://via.placeholder.com/400x250/333333/ffffff?text=Coming+Soon'; 
-  // Using more reliable screenshot service
-  return `https://api.screenshotlayer.com/api/capture?access_key=c7b8de7e5c8b0f9e9f4b7f9c0c7b8d7e&url=${encodeURIComponent(websiteUrl)}&viewport=1440x900&width=400&format=PNG`;
+const getScreenshotUrl = (project) => {
+  if (project.img) return project.img; // Use local image if provided
+  if (!project.url) return 'https://via.placeholder.com/400x250/333333/ffffff?text=Coming+Soon';
+  return `https://api.screenshotlayer.com/api/capture?access_key=...&url=${encodeURIComponent(project.url)}...`;
 };
 
 const projects = [
@@ -36,7 +36,7 @@ const projects = [
     url: "",
     repo: "",
     tech: ["React", "Context API", "Razorpay"],
-    status: "launching"
+   
   },
   {
     id: 4,
@@ -58,12 +58,13 @@ const projects = [
   },
  {
   id: 6,
-  title: "GramShree-Apna Bazaar",
+  title: "The Buyzaar Mart",
   subtitle: "FMCG Retail & Franchise Platform",
   description: "A government-affiliated franchise-driven retail platform under UP's Mukhya Mantri Yuva Udhyam Vikas Yojna offering FMCG, groceries, home care, and daily essentials. Features ERP integration, POS billing system, CRM tools, franchise management dashboard, 3D store visualization, online application portal, and comprehensive business ecosystem for Mini, Super, and Hyper Marts.",
-  url: "https://gramshree.co.in/",
+  img: "/buyzaarmartthumbnail.png",
+  url: "https://www.thebuyzaarmart.com/",
   repo: "",
-  tech: ["React", "CSS3", "JavaScript","POS Integration"],
+  tech: ["Next.js", "Tailwind CSS"],
 },
 
   {
@@ -93,6 +94,28 @@ const projects = [
     repo: "",
     tech: ["React", "CSS3", "JavaScript"],
   },
+  {
+  id: 10,
+  title: "Adharv International",
+  subtitle: "Brass Products E-commerce Platform",
+  description:
+    "A full-stack e-commerce platform for brass products featuring user and admin dashboards, product management, cart, checkout, and order tracking. Designed with a scalable architecture and responsive UI.",
+  url: "",
+  repo: "",
+  tech: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
+},
+{
+  id: 11,
+  title: "Buyzaar Mart",
+  subtitle: "E-commerce Platform",
+  description:
+    "A modern e-commerce platform built with Next.js, Tailwind CSS, Node.js, Express.js and MySQL focusing on smooth navigation, responsive design, and optimized performance for an enhanced shopping experience.",
+  url: "",
+  repo: "",
+  tech: ["Next.js", "Tailwind CSS"],
+},
+
+
 ];
 
 
@@ -112,7 +135,7 @@ const Projects = () => (
             
             <div className="project-image">
               <img 
-                src={getScreenshotUrl(project.url)} 
+                src={getScreenshotUrl(project)} 
                 alt={project.title}
                 onError={(e) => {
                   // Multiple fallback options

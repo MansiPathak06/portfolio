@@ -13,6 +13,8 @@ import { faMicrosoft} from "@fortawesome/free-brands-svg-icons";
 
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faFeatherPointed } from "@fortawesome/free-solid-svg-icons";
+import { faN } from '@fortawesome/free-solid-svg-icons';
+
 import './skills.css';
 
 
@@ -41,6 +43,11 @@ const Skills = () => {
         <FontAwesomeIcon icon={faReact} />
           <p className="skill-name">ReactJS</p>
         </div>
+        <div className="skill-item">
+  <FontAwesomeIcon icon={faN} />
+  <p className="skill-name">Next.js</p>
+</div>
+
         <div className="skill-item">
         <FontAwesomeIcon icon={faNodeJs} />
           <p className="skill-name">NodeJS</p>
