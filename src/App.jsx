@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 const App = () => {
-   useEffect(() => {
+  useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 30;
       const y = (e.clientY / window.innerHeight - 0.5) * 20;
@@ -25,23 +25,23 @@ const App = () => {
     <div>
       <Navbar />
 
-      <div  className="section-wrapper" id="home">
+      <div className="section-wrapper" id="home">
         <Home />
       </div>
 
-      <div  className="section-wrapper" id="about">
+      <div className="section-wrapper" id="about">
         <About />
       </div>
 
-      <div  className="section-wrapper" id="skills">
+      <div className="section-wrapper" id="skills">
         <Skills />
       </div>
 
-      <div  className="section-wrapper" id="projects">
+      <div className="section-wrapper" id="projects">
         <Projects />
       </div>
 
-      <div  className="section-wrapper" id="contact">
+      <div className="section-wrapper" id="contact">
         <Contact />
       </div>
 
