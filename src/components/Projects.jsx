@@ -1,220 +1,327 @@
-import React from "react";
+import React, { useState } from "react";
 import "./projects.css";
 
-// Helper function to generate screenshot URL
-const getScreenshotUrl = (project) => {
-  if (project.img) return project.img; // Use local image if provided
-  if (!project.url) return 'https://via.placeholder.com/400x250/333333/ffffff?text=Coming+Soon';
-  return `https://api.screenshotlayer.com/api/capture?access_key=...&url=${encodeURIComponent(project.url)}...`;
-};
+// Auto screenshot via microlink.io — free, no API key needed
+const getThumbUrl = (url) =>
+  `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
+
+const getInitials = (title) =>
+  title.split(" ").map((w) => w[0]).join("").slice(0, 3).toUpperCase();
 
 const projects = [
+  // ── Full Stack First ──────────────────────────────────────
   {
     id: 1,
-    title: "Portfolio Website",
-    subtitle: "Responsive React Site",
-    description: "A modern personal portfolio built with React featuring smooth navigation, responsive design, and dynamic components. Showcases projects, skills, and contact information with an elegant user interface.",
-    url: "https://mansi-portfolio06.netlify.app/",
-    repo: "https://github.com/MansiPathak06/portfolio",
-    tech: ["React", "CSS3", "JavaScript"],
+    title: "Herbsfox E-Commerce",
+    subtitle: "Full-Stack Shopping Platform",
+    description:
+      "A complete e-commerce solution for herbal products with cart management, Razorpay payment integration, user authentication, and an admin panel. Features modern UI and a seamless shopping experience.",
+    img: "/public/herbsfoxthumbnail.jpg",
+    url: "",
+    tech: ["React", "Context API", "Razorpay"],
+    category: "Full Stack",
   },
   {
     id: 2,
-    title: "Dice Game",
-    subtitle: "Interactive Mini Game",
-    description: "A fun two-player dice rolling game built with React. Features animated dice faces, score tracking, game rules, and responsive design for an engaging gaming experience.",
-    url: "http://minidicerollgame.netlify.app",
-    repo: "https://github.com/MansiPathak06/Dice-game",
-    tech: ["React", "CSS", "Game Logic"],
+    title: "EspoCRM",
+    subtitle: "CRM & Sales Automation",
+    description:
+      "A full-featured open-source CRM with sales automation, marketing campaigns, email management, workflow & BPM tools, and Twilio click-to-call. Includes lead tracking, contact management, and comprehensive reporting.",
+    url: "https://espocrm.netlify.app",
+    tech: ["React", "Node.js", "Express.js", "MySQL", "Twilio API"],
+    category: "Full Stack",
   },
   {
     id: 3,
-    title: "Herbsfox E-Commerce",
-    subtitle: "Full-Stack Shopping Platform",
-    description: "A complete e-commerce solution for herbal products with cart management, payment integration, user authentication, and admin panel. Features modern UI and seamless shopping experience.",
-    img:"/public/herbsfoxthumbnail.jpg",
-    url: "",
-    repo: "",
-    tech: ["React", "Context API", "Razorpay"],
-   
+    title: "Kara Homes",
+    subtitle: "Brass Products E-Commerce",
+    description:
+      "Full-stack e-commerce for premium brass products — user & admin dashboards, product management, cart, checkout, and real-time order tracking. Scalable architecture with a responsive UI.",
+    url: "https://karahomes.in/",
+    tech: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
+    category: "Full Stack",
   },
   {
     id: 4,
-    title: "Jigyasa Hospital",
-    subtitle: "Healthcare Website",
-    description: "A professional hospital management website with appointment booking, doctor profiles, department information, and patient services. Built with modern web standards and healthcare focus.",
-    url: "https://jigyasahospital.com/",
-    repo: "",
-    tech: ["React", "CSS3", "JavaScript"],
+    title: "The Buyzaar Mart",
+    subtitle: "FMCG Retail & Franchise Platform",
+    description:
+      "Government-affiliated franchise retail platform under UP's Mukhya Mantri Yuva Udhyam Vikas Yojna. Features ERP, POS billing, CRM, franchise dashboard, 3D store visualization, and online application portal for Mini, Super & Hyper Marts.",
+    img: "/buyzaarmartthumbnail.png",
+    url: "https://www.thebuyzaarmart.com/",
+    tech: ["Next.js", "Tailwind CSS"],
+    category: "Full Stack",
   },
   {
     id: 5,
-    title: "Madhuram Restaurant",
-    subtitle: "Restaurant Website",
-    description: "An elegant restaurant website showcasing menu, ambiance, and dining experience. Features modern design with smooth navigation and appetizing food gallery for enhanced customer engagement.",
-    url: "https://madhuram-website.netlify.app/",
-    repo: "",
-    tech: ["React", "CSS3", "JavaScript"],
+    title: "HomeEase",
+    subtitle: "On-Demand Home Services",
+    description:
+      "A smart platform connecting homeowners with verified service professionals for on-demand maintenance, repairs, and cleaning. Features real-time booking, service tracking, and seamless provider management.",
+    url: "https://home-ease-1q4l.onrender.com",
+    tech: ["React", "Node.js", "Express.js"],
+    category: "Full Stack",
   },
- {
-  id: 6,
-  title: "The Buyzaar Mart",
-  subtitle: "FMCG Retail & Franchise Platform",
-  description: "A government-affiliated franchise-driven retail platform under UP's Mukhya Mantri Yuva Udhyam Vikas Yojna offering FMCG, groceries, home care, and daily essentials. Features ERP integration, POS billing system, CRM tools, franchise management dashboard, 3D store visualization, online application portal, and comprehensive business ecosystem for Mini, Super, and Hyper Marts.",
-  img: "/buyzaarmartthumbnail.png",
-  url: "https://www.thebuyzaarmart.com/",
-  repo: "",
-  tech: ["Next.js", "Tailwind CSS"],
-},
-
+  // ── Professional / Business Sites ─────────────────────────
+  {
+    id: 6,
+    title: "Muft Madad",
+    subtitle: "Free Healthcare Assistance",
+    description:
+      "Platform offering free OPD services, 50% discount on diagnostics, and complete surgical coverage for patients above 70. Connects 500+ patients with board-certified specialists and hospital networks for end-to-end support.",
+    url: "https://www.muftmadad.com/",
+    tech: ["React", "CSS3", "JavaScript"],
+    category: "Web",
+  },
   {
     id: 7,
-    title: "Brass Hospital",
-    subtitle: "Multi-Specialty Healthcare Website",
-    description: "A professional healthcare website for Brass Hospital in Moradabad featuring department information, specialist profiles, patient care services, and medical facility details. Built with modern web standards for optimal patient experience.",
-    url: "https://www.brasshospital.com/",
-    repo: "",
-    tech: ["React", "CSS3"],
+    title: "MTBOSS",
+    subtitle: "Construction & Infrastructure",
+    description:
+      "Professional construction company website showcasing large-scale infrastructure projects, services, and portfolio. Features modern design with project case studies and client engagement tools.",
+    url: "https://mt-boss.vercel.app/",
+    tech: ["React", "CSS3", "JavaScript"],
+    category: "Web",
   },
   {
     id: 8,
-    title: "EspoCRM",
-    subtitle: "Customer Relationship Management System",
-    description: "A full-featured open-source CRM platform with sales automation, marketing campaigns, email management, workflow automation, BPM tools, calendar integration, and Twilio click-to-call functionality. Includes lead tracking, contact management, and comprehensive reporting analytics.",
-    url: "https://espocrm.netlify.app",
-    repo: "",
-    tech: ["React", "CSS3", "JavaScript", "Express.js", "Node.js","Twilio API", "MySQL"],
+    title: "Nikah India",
+    subtitle: "Matrimonial Platform",
+    description:
+      "Comprehensive matrimonial website for the Muslim community in India. Profile matching with search filters by region, sect, and education, and a seamless communication system for families.",
+    url: "https://nikahindia.org/",
+    tech: ["React", "CSS3", "JavaScript"],
+    category: "Web",
   },
   {
     id: 9,
-    title: "Motor Services",
-    subtitle: "Automotive Service Platform",
-    description: "A comprehensive motor service website offering vehicle maintenance, repair services, and automotive solutions. Clean interface with service booking and customer support features.",
-    url: "https://motorservices.netlify.app/",
-    repo: "",
+    title: "PCS Frames",
+    subtitle: "Photo Lab & Custom Frames",
+    description:
+      "Elegant photo lab and custom framing studio showcasing frame collections, canvas prints, and photo products. Polished gallery and ordering interface for premium custom framing services.",
+    url: "https://www.pcsframes.com/",
     tech: ["React", "CSS3", "JavaScript"],
+    category: "Web",
   },
   {
-  id: 10,
-  title: "Adharv International",
-  subtitle: "Brass Products E-commerce Platform",
-  description:
-    "A full-stack e-commerce platform for brass products featuring user and admin dashboards, product management, cart, checkout, and order tracking. Designed with a scalable architecture and responsive UI.",
-  url: "",
-  repo: "",
-  tech: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
-},
-{
-  id: 11,
-  title: "Buyzaar Mart",
-  subtitle: "E-commerce Platform",
-  description:
-    "A modern e-commerce platform built with Next.js, Tailwind CSS, Node.js, Express.js and MySQL focusing on smooth navigation, responsive design, and optimized performance for an enhanced shopping experience.",
-  url: "",
-  repo: "",
-  tech: ["Next.js", "Tailwind CSS"],
-},
-
-
+    id: 10,
+    title: "Jigyasa Hospital",
+    subtitle: "Healthcare Website",
+    description:
+      "Professional hospital website with appointment booking, specialist profiles, department information, and patient services. Built with modern web standards and a strong focus on patient experience.",
+    url: "https://jigyasahospital.com/",
+    tech: ["React", "CSS3", "JavaScript"],
+    category: "Web",
+  },
+  {
+    id: 11,
+    title: "Brass Hospital",
+    subtitle: "Multi-Specialty Healthcare",
+    description:
+      "Multi-specialty healthcare website for Brass Hospital, Moradabad — department information, specialist profiles, patient care services, and medical facility details.",
+    url: "https://www.brasshospital.com/",
+    tech: ["React", "CSS3"],
+    category: "Web",
+  },
+  {
+    id: 12,
+    title: "Madhuram Restaurant",
+    subtitle: "Restaurant & Dining",
+    description:
+      "Elegant restaurant website showcasing menu, ambiance, and dining experience. Smooth navigation with an appetizing food gallery for enhanced customer engagement.",
+    url: "https://madhuram-website.netlify.app/",
+    tech: ["React", "CSS3", "JavaScript"],
+    category: "Web",
+  },
+  {
+    id: 13,
+    title: "Motor Services",
+    subtitle: "Automotive Service Platform",
+    description:
+      "Comprehensive motor service website offering vehicle maintenance, repair services, and automotive solutions. Clean interface with service booking and customer support features.",
+    url: "https://motorservices.netlify.app/",
+    tech: ["React", "CSS3", "JavaScript"],
+    category: "Web",
+  },
+  // ── Personal Projects ──────────────────────────────────────
+  {
+    id: 14,
+    title: "Portfolio Website",
+    subtitle: "Personal Portfolio",
+    description:
+      "Modern personal portfolio built with React featuring smooth navigation, responsive design, and dynamic components. Showcases projects, skills, and contact information.",
+    url: "https://mansi-portfolio06.netlify.app/",
+    tech: ["React", "CSS3", "JavaScript"],
+    category: "Personal",
+  },
+  {
+    id: 15,
+    title: "Dice Game",
+    subtitle: "Interactive Mini Game",
+    description:
+      "Fun two-player dice rolling game built with React. Features animated dice faces, score tracking, and game rules for an engaging gaming experience.",
+    url: "http://minidicerollgame.netlify.app",
+    tech: ["React", "CSS", "Game Logic"],
+    category: "Personal",
+  },
 ];
 
+const CATEGORIES = ["All", "Full Stack", "Web", "Personal"];
 
-const Projects = () => (
-  <section className="projects" id="projects">
-    <div className="container">
-      <div className="section-header">
-        <span className="section-tag">Portfolio</span>
-        <h2 className="section-title">Featured Projects</h2>
-        <p className="section-desc">Crafted with passion and precision</p>
-      </div>
+const Projects = () => {
+  const [filter, setFilter] = useState("All");
 
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div key={project.id} className={`project-card ${project.status === 'launching' ? 'coming-soon' : ''}`}>
-            <div className="card-number">{String(index + 1).padStart(2, '0')}</div>
-            
-            <div className="project-image">
-              <img 
-                src={getScreenshotUrl(project)} 
-                alt={project.title}
-                onError={(e) => {
-                  // Multiple fallback options
-                  if (e.target.src.includes('screenshotlayer')) {
-                    e.target.src = `https://mini.s-shot.ru/1024x768/PNG/400/Z100/?${project.url}`;
-                  } else if (e.target.src.includes('s-shot')) {
-                    e.target.src = `https://webshots.io/api/v1/screenshot?url=${project.url}&width=400&height=250`;
-                  } else {
-                    // Final fallback - create a simple colored placeholder
-                    e.target.src = 'data:image/svg+xml;base64,' + btoa(`
-                      <svg width="400" height="250" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="400" height="250" fill="#1a1a1a"/>
-                        <text x="200" y="125" text-anchor="middle" fill="#57c8ff" font-size="18" font-family="Arial">
-                          ${project.title}
-                        </text>
-                      </svg>
-                    `);
-                  }
-                }}
-              />
-              <div className="image-overlay">
-                <div className="overlay-actions">
+  const filtered =
+    filter === "All" ? projects : projects.filter((p) => p.category === filter);
+
+  const fullStackCount = projects.filter((p) => p.category === "Full Stack").length;
+
+  return (
+    <section className="projects" id="projects">
+      <div className="container">
+
+        {/* Header */}
+        <div className="section-header">
+          <span className="section-tag">Portfolio</span>
+          <h2 className="section-title">Featured Projects</h2>
+          <p className="section-desc">Crafted with passion and precision</p>
+        </div>
+
+        {/* Stats bar */}
+        <div className="proj-stats-bar">
+          <span><span className="stat-num">{projects.length}</span> Projects</span>
+          <div className="stats-divider" />
+          <span><span className="stat-num">{fullStackCount}</span> Full Stack</span>
+          <div className="stats-divider" />
+          <span><span className="stat-num">10+</span> Technologies</span>
+        </div>
+
+        {/* Filter tabs */}
+        <div className="filter-tabs">
+          {CATEGORIES.map((c) => (
+            <button
+              key={c}
+              className={`filter-btn ${filter === c ? "active" : ""}`}
+              onClick={() => setFilter(c)}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div className="projects-grid">
+          {filtered.map((project, index) => {
+            const initials = getInitials(project.title);
+            const catClass = project.category.toLowerCase().replace(" ", "");
+
+            return (
+              <div className="project-card" key={project.id}>
+
+                {/* Image area */}
+                <div className="project-image">
+                  <span className={`card-category-pill ${catClass}`}>
+                    {project.category}
+                  </span>
+                  <span className="card-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Image: local > auto screenshot > nothing */}
+                  {project.img ? (
+                    <img
+                      src={project.img}
+                      alt={project.title}
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                        e.target.nextSibling.style.display = "flex";
+                      }}
+                    />
+                  ) : project.url ? (
+                    <img
+                      src={getThumbUrl(project.url)}
+                      alt={project.title}
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                        e.target.nextSibling.style.display = "flex";
+                      }}
+                    />
+                  ) : null}
+
+                  {/* Initials fallback */}
+                  <div
+                    className="screenshot-fallback"
+                    style={{
+                      display: !project.img && !project.url ? "flex" : "none",
+                    }}
+                  >
+                    <div className="fallback-initials">{initials}</div>
+                    <div className="fallback-label">{project.subtitle}</div>
+                  </div>
+
+                  {/* Hover overlay */}
                   {project.url && (
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="action-btn preview">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                      </svg>
-                    </a>
-                  )}
-                  {project.repo && (
-                    <a href={project.repo} target="_blank" rel="noopener noreferrer" className="action-btn code">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75 5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.38 13.38 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 6.75 5.44 5.44 0 0 0 3.5 10.5c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"/>
-                      </svg>
-                    </a>
+                    <div className="image-overlay">
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="overlay-visit-btn"
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                        Visit Site
+                      </a>
+                    </div>
                   )}
                 </div>
-              </div>
-            </div>
 
-            <div className="project-info">
-              <div className="project-header">
-                <h3 className="project-title">{project.title}</h3>
-                <span className="project-subtitle">{project.subtitle}</span>
-              </div>
-              
-              <p className="project-description">{project.description}</p>
-              
-              <div className="tech-stack">
-                {project.tech.map((tech, i) => (
-                  <span key={i} className="tech-tag">{tech}</span>
-                ))}
-              </div>
+                {/* Info */}
+                <div className="project-info">
+                  <div className="project-header">
+                    <h3 className="project-title">{project.title}</h3>
+                    <span className="project-subtitle">{project.subtitle}</span>
+                  </div>
 
-              <div className="project-links">
-                {project.url ? (
-                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="main-btn">
-                    View Live
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M7 17l10-10M17 7H7v10"/>
-                    </svg>
-                  </a>
-                ) : (
-                  <button className="main-btn disabled">
-                    Coming Soon
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10"/>
-                      <polyline points="12,6 12,12 16,14"/>
-                    </svg>
-                  </button>
-                )}
+                  <p className="project-description">{project.description}</p>
+
+                  <div className="tech-stack">
+                    {project.tech.map((t, i) => (
+                      <span className="tech-tag" key={i}>{t}</span>
+                    ))}
+                  </div>
+
+                  <div className="project-links">
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="main-btn"
+                      >
+                        <span className="live-dot" />
+                        View Live
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M7 17L17 7M17 7H7M17 7v10" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <span className="private-label">Private Project</span>
+                    )}
+                  </div>
+                </div>
+
               </div>
-            </div>
-          </div>
-        ))}
+            );
+          })}
+        </div>
+
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Projects;
