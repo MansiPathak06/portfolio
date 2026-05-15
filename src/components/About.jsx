@@ -12,7 +12,7 @@ const About = () => {
         <h1 className="about">About Me</h1>
 
         <p className="content">
-          I'm a Full Stack Developer specializing in React.js, Next.js, Node.js, Express.js, 
+          I'm a Full Stack Developer specializing in React.js, Node.js, Express.js, 
           and MySQL. I build scalable, responsive web applications with focus on clean code, 
           performance, and exceptional user experience.
         </p>
